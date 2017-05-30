@@ -78,7 +78,7 @@ include 'db_con.php';
        "parti"=> FILTER_SANITIZE_STRING,
        "description"=> FILTER_SANITIZE_STRING
        );
-       // samler ALLE form data som array
+       
        $formData = filter_input_array(INPUT_GET, $filter);
        print_r($formData);
        $name = $formData['name'];
@@ -87,9 +87,9 @@ include 'db_con.php';
        $beskrivelse = $formData['description'];
         
        $stmt = $con->prepare("SELECT name, town, parti, description FROM politiker");
-       // execute the statement
+       
        +$stmt->execute();
-       // forberedelsen til data afhentning: prepared statement
+       
        $stmt->bind_result($name, $town, $parti, $beskrivelse);
         
        echo '<ol>';
